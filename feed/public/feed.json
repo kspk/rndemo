@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Over the snow",
+        "creator": "Anna Shvets",
+        "url": "http://localhost:3000/assets/v/1.mp4",
+        "thmb": "http://localhost:3000/assets/v/1.png"
+    },
+    {
+        "title": "Grapevine",
+        "creator": "Ivan Khmelyuk",
+        "url": "http://localhost:3000/assets/v/2.mp4",
+        "thmb": "http://localhost:3000/assets/v/2.png"
+    },
+    {
+        "title": "Lavender",
+        "creator": "Ivan Khmelyuk",
+        "url": "http://localhost:3000/assets/v/3.mp4",
+        "thmb": "http://localhost:3000/assets/v/3.png"
+    },
+    {
+        "title": "Glitch",
+        "creator": "Koolshooters",
+        "url": "http://localhost:3000/assets/v/4.mp4",
+        "thmb": "http://localhost:3000/assets/v/4.png"
+    },
+    {
+        "title": "Clouds",
+        "creator": "Mart Production",
+        "url": "http://localhost:3000/assets/v/5.mp4",
+        "thmb": "http://localhost:3000/assets/v/5.png"
+    },
+    {
+        "title": "Shadow Glasses",
+        "creator": "Olya Kobruseva",
+        "url": "http://localhost:3000/assets/v/6.mp4",
+        "thmb": "http://localhost:3000/assets/v/6.png"
+    },
+    {
+        "title": "Campfire",
+        "creator": "Unknown",
+        "url": "http://localhost:3000/assets/v/7.mp4",
+        "thmb": "http://localhost:3000/assets/v/7.png"
+    }
+]
