@@ -1,13 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React from 'react';
 import {
     ImageBackground,
@@ -15,10 +5,11 @@ import {
     StyleSheet,
     Text,
     View,
-    Dimensions
+    Dimensions,
 } from 'react-native';
 
-import { Item, List } from './models';
+import {Item, List} from '../models';
+import Video from 'react-native-video';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -26,9 +17,20 @@ const height = Dimensions.get('window').height;
 const HeroTile = (props: Item) => {
     return (
         <View style={styles.heroItemContainer}>
+            {/* <Video
+                source={{uri: props.url}}
+                style={styles.heroVideoPreview}
+                controls={false}
+                ref={(ref) => {
+                    this.player = ref
+                }}
+                resizeMode="cover"
+                repeat={true}
+                muted={true}
+            /> */}
             <ImageBackground
-                source={{ uri: props.thmb }}
-                resizeMode='cover'
+                source={{uri: props.thmb}}
+                resizeMode="cover"
                 style={styles.heroItem}>
                 <View style={styles.heroTextWrap}>
                     <Text style={styles.heroTitle}>{props.title}</Text>
@@ -37,20 +39,20 @@ const HeroTile = (props: Item) => {
             </ImageBackground>
         </View>
     );
-}
+};
 
 const Hero = (props: List) => {
     return (
-        <ScrollView 
-            contentInsetAdjustmentBehavior="automatic" 
+        <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
             horizontal={true}
             style={styles.hero}
-            pagingEnabled={true} 
+            pagingEnabled={true}
             disableIntervalMomentum={true}
             directionalLockEnabled={true}>
-            {
-                props.items.map(i => <HeroTile {...i} key={i.id}></HeroTile>)
-            }
+            {props.items.map(i => (
+                <HeroTile {...i} key={i.id} />
+            ))}
         </ScrollView>
     );
 };
@@ -58,7 +60,7 @@ const Hero = (props: List) => {
 const styles = StyleSheet.create({
     hero: {
         height: 320,
-        backgroundColor: '#f1f1f1'
+        backgroundColor: '#f1f1f1',
     },
     heroItem: {
         width: width,
@@ -66,9 +68,11 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column-reverse',
     },
-    heroItemContainer: {
-
+    heroVideoPreview: {
+        width: width,
+        height: '100%',
     },
+    heroItemContainer: {},
     heroTextWrap: {
         padding: 16,
         backgroundColor: 'rgba(0,0,0,.3)',
@@ -80,8 +84,8 @@ const styles = StyleSheet.create({
     },
     heroDesc: {
         fontSize: 18,
-        color: 'white'
-    }
+        color: 'white',
+    },
 });
 
 export default Hero;

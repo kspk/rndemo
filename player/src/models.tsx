@@ -1,4 +1,3 @@
-
 interface Item {
     id: string;
     title: string;
@@ -20,4 +19,4 @@ interface Feed {
     lists: List[];
 }
 
-export type { Item, List, Feed };
+export type {Item, List, Feed};
