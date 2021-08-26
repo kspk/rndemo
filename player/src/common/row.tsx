@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
     },
     rowTitle: {
+        color: 'white',
         margin: 8,
         marginBottom: 0,
     },

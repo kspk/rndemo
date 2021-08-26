@@ -6,11 +6,14 @@ import {
     Dimensions,
     ScrollView,
     Image,
+    Button,
 } from 'react-native';
 
 import DetailHeader from './header';
+import DetailContent from './content';
 import {Item} from '../models';
 import BackButton from '../common/back';
+import RelatedContent from '../common/related';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -20,9 +23,10 @@ const Detail = ({route, navigation}) => {
 
     return (
         <>
-            <ScrollView style={styles.detailPage}>
+            <ScrollView style={styles.detailScreen}>
                 <DetailHeader {...item} />
-                <Text>This is Detail page: {item.title}</Text>
+                <DetailContent {...item} />
+                <RelatedContent {...item} />
             </ScrollView>
             <BackButton />
         </>
@@ -30,8 +34,9 @@ const Detail = ({route, navigation}) => {
 };
 
 const styles = StyleSheet.create({
-    detailPage: {
+    detailScreen: {
         width: width,
+        backgroundColor: '#111',
     },
 });
 

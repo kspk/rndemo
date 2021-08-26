@@ -8,7 +8,7 @@ const Tile = (props: Item) => {
     const navigation = React.useContext(NavigationContext);
 
     const showDetails = () => {
-        navigation?.navigate('Detail', props);
+        navigation?.push('Detail', props);
     };
 
     return (
@@ -26,13 +26,13 @@ const Tile = (props: Item) => {
 
 const styles = StyleSheet.create({
     tileWrap: {
-        borderRadius: 8,
+        borderRadius: 4,
         margin: 4,
         overflow: 'hidden',
     },
     tile: {
-        width: 220,
-        height: 120,
+        width: 116,
+        height: 160,
     },
 });
 

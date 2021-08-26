@@ -10,70 +10,84 @@ import {
 
 import {Item, List} from '../models';
 import Video from 'react-native-video';
+import Carousel from 'react-native-snap-carousel';
+import {useRef} from 'react';
+import { useState } from 'react';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const HeroTile = (props: Item) => {
+    const player = useRef(null);
     return (
         <View style={styles.heroItemContainer}>
+            <ImageBackground
+                source={{uri: props.thmb}}
+                resizeMode="cover"
+                style={styles.heroItem}
+            />
             {/* <Video
                 source={{uri: props.url}}
                 style={styles.heroVideoPreview}
                 controls={false}
-                ref={(ref) => {
-                    this.player = ref
-                }}
+                ref={player}
                 resizeMode="cover"
                 repeat={true}
                 muted={true}
             /> */}
-            <ImageBackground
-                source={{uri: props.thmb}}
-                resizeMode="cover"
-                style={styles.heroItem}>
-                <View style={styles.heroTextWrap}>
-                    <Text style={styles.heroTitle}>{props.title}</Text>
-                    <Text style={styles.heroDesc}>{props.creator}</Text>
-                </View>
-            </ImageBackground>
+            <View style={styles.heroTextWrap}>
+                <Text style={styles.heroTitle}>{props.title}</Text>
+                <Text style={styles.heroDesc}>{props.creator}</Text>
+            </View>
         </View>
     );
 };
 
 const Hero = (props: List) => {
+    const carousel = useRef(null);
+    const renderItem = ({item, index}) => <HeroTile {...item} key={item.id} />;
+
+    const onSnapToItem = (slideIndex: number) => {
+        if (carousel.current) {
+            carousel.current.snapToItem(slideIndex);
+        }
+    };
+
     return (
-        <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            horizontal={true}
-            style={styles.hero}
-            pagingEnabled={true}
-            disableIntervalMomentum={true}
-            directionalLockEnabled={true}>
-            {props.items.map(i => (
-                <HeroTile {...i} key={i.id} />
-            ))}
-        </ScrollView>
+        <>
+            <Carousel
+                ref={carousel}
+                data={props.items}
+                renderItem={renderItem}
+                sliderWidth={width}
+                sliderHeight={320}
+                itemWidth={width}
+                itemHeight={320}
+                loop={false}
+                onSnapToItem={onSnapToItem}
+            />
+        </>
     );
 };
 
 const styles = StyleSheet.create({
-    hero: {
+    heroItemContainer: {
+        width: width,
         height: 320,
-        backgroundColor: '#f1f1f1',
     },
     heroItem: {
-        width: width,
+        width: '100%',
         height: '100%',
-        display: 'flex',
-        flexDirection: 'column-reverse',
+        position: 'absolute',
     },
     heroVideoPreview: {
-        width: width,
+        width: '100%',
         height: '100%',
+        position: 'absolute',
     },
-    heroItemContainer: {},
     heroTextWrap: {
+        position: 'absolute',
+        bottom: 0,
         padding: 16,
         backgroundColor: 'rgba(0,0,0,.3)',
     },

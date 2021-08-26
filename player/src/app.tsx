@@ -5,7 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Home from './home/home';
 import Detail from './detail/detail';
-import { Image } from 'react-native';
+import PlayerScreen from './common/player';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +17,7 @@ const App = () => {
                 }}>
                 <Stack.Screen name="Home" component={Home} />
                 <Stack.Screen name="Detail" component={Detail} />
+                <Stack.Screen name="PlayerScreen" component={PlayerScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
