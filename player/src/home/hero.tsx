@@ -6,6 +6,7 @@ import {
     Text,
     View,
     Dimensions,
+    TouchableOpacity,
 } from 'react-native';
 
 import {Item, List} from '../models';
@@ -13,33 +14,42 @@ import Video from 'react-native-video';
 import Carousel from 'react-native-snap-carousel';
 import {useRef} from 'react';
 import { useState } from 'react';
+import { NavigationContext } from '@react-navigation/native';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const HeroTile = (props: Item) => {
     const player = useRef(null);
+    const navigation = React.useContext(NavigationContext);
+
+    const showDetails = () => {
+        navigation?.push('Detail', props);
+    };
+
     return (
-        <View style={styles.heroItemContainer}>
-            <ImageBackground
-                source={{uri: props.thmb}}
-                resizeMode="cover"
-                style={styles.heroItem}
-            />
-            {/* <Video
-                source={{uri: props.url}}
-                style={styles.heroVideoPreview}
-                controls={false}
-                ref={player}
-                resizeMode="cover"
-                repeat={true}
-                muted={true}
-            /> */}
-            <View style={styles.heroTextWrap}>
-                <Text style={styles.heroTitle}>{props.title}</Text>
-                <Text style={styles.heroDesc}>{props.creator}</Text>
+        <TouchableOpacity activeOpacity={0.6} onPress={showDetails}>
+            <View style={styles.heroItemContainer}>
+                <ImageBackground
+                    source={{uri: props.thmb}}
+                    resizeMode="cover"
+                    style={styles.heroItem}
+                />
+                {/* <Video
+                    source={{uri: props.url}}
+                    style={styles.heroVideoPreview}
+                    controls={false}
+                    ref={player}
+                    resizeMode="cover"
+                    repeat={true}
+                    muted={true}
+                /> */}
+                <View style={styles.heroTextWrap}>
+                    <Text style={styles.heroTitle}>{props.title}</Text>
+                    <Text style={styles.heroDesc}>{props.creator}</Text>
+                </View>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 

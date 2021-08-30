@@ -10,6 +10,7 @@ const height = Dimensions.get('window').height;
 const PlayerScreen = ({route, navigation}) => {
     const item: Item = route.params;
     const player = useRef(null);
+
     return (
         <>
             <View style={styles.playerScreen}>
@@ -20,6 +21,7 @@ const PlayerScreen = ({route, navigation}) => {
                     ref={player}
                     resizeMode="contain"
                     repeat={true}
+                    fullscreen={true}
                 />
             </View>
             <BackButton />
